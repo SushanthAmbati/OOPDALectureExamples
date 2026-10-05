@@ -10,10 +10,10 @@ Work through these roughly in order. Each folder has its own README with the big
 
 | # | Topic | Folder | Start by running |
 |---|-------|--------|------------------|
-| 1 | Interfaces, static vs. dynamic type, polymorphism | [`src/InterfaceLecture`](src/InterfaceLecture/README.md) | `NotifierDemo` |
-| 2 | Sorting your own objects with `Comparable` | [`src/sort`](src/sort/README.md) | `SortWithoutComparableDemo`, then `BookDemo` |
-| 3 | Functional interfaces and lambdas | [`src/UnderstandingLambdas`](src/UnderstandingLambdas/README.md) | `LambdasDriver` |
-| 4 | Many orderings with `Comparator` lambdas | [`src/UnderstandingLambdas/Comparators`](src/UnderstandingLambdas/Comparators/README.md) | `BookDemo` |
+| 1 | Interfaces, static vs. dynamic type, polymorphism | [`src/interfaces`](src/interfaces/README.md) | `NotifierDemo` |
+| 2 | Sorting your own objects with `Comparable` | [`src/sorting`](src/sorting/README.md) | `SortWithoutComparableDemo`, then `BookDemo` |
+| 3 | Functional interfaces and lambdas | [`src/lambdas`](src/lambdas/README.md) | `LambdasDemo` |
+| 4 | Many orderings with `Comparator` lambdas | [`src/lambdas/comparators`](src/lambdas/comparators/README.md) | `BookDemo` |
 
 ### How to use each example
 
@@ -43,7 +43,7 @@ Work through these roughly in order. Each folder has its own README with the big
 
 4. In VS Code, open the repository's `OOPDALectureExamples` folder using **File > Open Folder**. Open the repository root, not just the `src` folder, and wait for Java support to finish loading.
 
-5. Open `src/InterfaceLecture/NotifierDemo.java`. Select **Run** above the `main` method to compile and run the example. Its output will appear in the VS Code terminal.
+5. Open `src/interfaces/NotifierDemo.java`. Select **Run** above the `main` method to compile and run the example. Its output will appear in the VS Code terminal.
 
 ## Project Folders
 
@@ -52,7 +52,7 @@ Work through these roughly in order. Each folder has its own README with the big
 - `bin/` contains compiled `.class` files. These are generated output; edit the source files in `src/` instead.
 - `docs/` contains notes for maintainers. [`docs/ADDING_EXAMPLES.md`](docs/ADDING_EXAMPLES.md) explains the naming conventions and README template used for each topic.
 
-Other examples: `java -cp bin InterfaceLecture.NotifierDemo`, `java -cp bin UnderstandingLambdas.Comparators.BookDemo`.
+Other examples: `java -cp bin interfaces.NotifierDemo`, `java -cp bin lambdas.comparators.BookDemo`.
 
 ## Troubleshooting
 
