@@ -1,17 +1,39 @@
-package InterfaceLecture;
+package interfaces;
 
+/**
+ * Walks through static vs. dynamic types using Notifier.
+ * Each numbered section in main matches a heading in the output.
+ *
+ * @author Sushanth Ambati
+ * @version 1.0
+ */
 public class NotifierDemo {
 
     // Two overloads. Which one the compiler picks is decided by the
     // STATIC type of the argument, not by the object passed in.
+    /**
+     * Chosen when the argument's static type is Notifier.
+     *
+     * @param n the notifier being logged
+     */
     static void log(Notifier n) {
         System.out.println("  log(Notifier) was chosen");
     }
 
+    /**
+     * Chosen when the argument's static type is EmailNotifier.
+     *
+     * @param e the email notifier being logged
+     */
     static void log(EmailNotifier e) {
         System.out.println("  log(EmailNotifier) was chosen");
     }
 
+    /**
+     * Runs the demo.
+     *
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
 
         // Static type: Notifier.   Dynamic type: EmailNotifier.
@@ -22,7 +44,8 @@ public class NotifierDemo {
         System.out.println("   declared as Notifier, actually a " + notifier.getClass().getSimpleName());
 
         System.out.println("\n2. The static type limits what you may call");
-        System.out.println("   inbox size = " + ((EmailNotifier) notifier).getInboxSize());
+        //System.out.println(notifier instanceof Notifier);  // true
+        System.out.println("   inbox size = " + ((EmailNotifier)notifier).getInboxSize());
         //notifier.getInboxSize();
         // ^ What happens here?
     

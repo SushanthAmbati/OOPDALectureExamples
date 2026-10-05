@@ -4,6 +4,24 @@ This repository contains Java examples discussed during the Object-Oriented Prog
 
 More examples will be added soon!
 
+## Topics
+
+Work through these roughly in order. Each folder has its own README with the big idea, what every file does, and **Try it** exercises.
+
+| # | Topic | Folder | Start by running |
+|---|-------|--------|------------------|
+| 1 | Interfaces, static vs. dynamic type, polymorphism | [`src/InterfaceLecture`](src/InterfaceLecture/README.md) | `NotifierDemo` |
+| 2 | Sorting your own objects with `Comparable` | [`src/sort`](src/sort/README.md) | `SortWithoutComparableDemo`, then `BookDemo` |
+| 3 | Functional interfaces and lambdas | [`src/UnderstandingLambdas`](src/UnderstandingLambdas/README.md) | `LambdasDriver` |
+| 4 | Many orderings with `Comparator` lambdas | [`src/UnderstandingLambdas/Comparators`](src/UnderstandingLambdas/Comparators/README.md) | `BookDemo` |
+
+### How to use each example
+
+1. **Read the folder's README.** Begin with the big idea and the files table.
+2. **Run the demo** (any file with a `main` method). Compare its output with the README.
+3. **Break it on purpose.** Look for comments like `// ^ Uncomment: COMPILE ERROR`. Uncomment the line, predict what will happen, then run it.
+4. **Do the "Try it" exercises.** Experiment freely. You can always get the original back with `git checkout -- src/`, or by downloading the repository again.
+
 ## Getting Set Up
 
 1. Install a Java Development Kit (JDK). Use the version specified by your instructor; if no version is specified, JDK 17 or newer is recommended. In a terminal, check that Java is available by running:
@@ -32,5 +50,10 @@ More examples will be added soon!
 - `src/` contains the Java examples. Explore them, run them, and make your own changes as you work through the course.
 - `lib/` is for external `.jar` dependencies when an example needs them.
 - `bin/` contains compiled `.class` files. These are generated output; edit the source files in `src/` instead.
+- `docs/` contains notes for maintainers. [`docs/ADDING_EXAMPLES.md`](docs/ADDING_EXAMPLES.md) explains the naming conventions and README template used for each topic.
+
+Other examples: `java -cp bin InterfaceLecture.NotifierDemo`, `java -cp bin UnderstandingLambdas.Comparators.BookDemo`.
+
+## Troubleshooting
 
 If VS Code cannot find Java, confirm that both `java --version` and `javac --version` work in a new terminal. Then open the Command Palette and run **Java: Configure Java Runtime** to check the JDK selected by VS Code.
