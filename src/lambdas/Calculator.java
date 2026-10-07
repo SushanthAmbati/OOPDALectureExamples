@@ -4,7 +4,7 @@ package lambdas;
  * Runs whatever operation it's given, without knowing or caring which one.
  *
  * @author Sushanth Ambati
- * @version 1.0
+ * @version 1.1
  */
 class Calculator {
     /**
@@ -19,5 +19,29 @@ class Calculator {
     // It has NO idea what op does. It only knows: "op has an operation(a, b)".
     public int operateBinary(int a, int b, IntegerMath op) {
         return op.operation(a, b);
+    }
+
+    // Every new SHAPE of behavior needs a new interface AND a new method.
+    // See FunctionalInterfaceDemo for how java.util.function avoids this.
+    /**
+     * Runs check on n.
+     *
+     * @param n     the number to check
+     * @param check the yes/no question to ask about n
+     * @return whatever check returns
+     */
+    public boolean checkNumber(int n, IntegerCheck check) {
+        return check.test(n);
+    }
+
+    /**
+     * Runs check on s.
+     *
+     * @param s     the text to check
+     * @param check the yes/no question to ask about s
+     * @return whatever check returns
+     */
+    public boolean checkText(String s, TextCheck check) {
+        return check.test(s);
     }
 }

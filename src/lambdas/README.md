@@ -8,8 +8,10 @@
 |------|------|
 | [`IntegerMath.java`](IntegerMath.java) | The functional interface. It has one method: `int operation(int a, int b)`. |
 | [`Adder.java`](Adder.java), [`Subtractor.java`](Subtractor.java) | The "long way": full classes that implement `IntegerMath`. |
-| [`Calculator.java`](Calculator.java) | `operateBinary(a, b, op)` accepts **any** `IntegerMath` and doesn't know which one it got. |
+| [`IntegerCheck.java`](IntegerCheck.java), [`TextCheck.java`](TextCheck.java) | Two more home-made functional interfaces, `(int) -> boolean` and `(String) -> boolean`. Together they show the repetition problem. |
+| [`Calculator.java`](Calculator.java) | `operateBinary(a, b, op)` accepts **any** `IntegerMath` and doesn't know which one it got. `checkNumber` and `checkText` do the same for the two check interfaces. |
 | [`LambdasDemo.java`](LambdasDemo.java) | ▶ Compares named classes with lambdas. |
+| [`FunctionalInterfaceDemo.java`](FunctionalInterfaceDemo.java) | ▶ Shows why `java.util.function` exists: `Predicate`, `Function`, `Consumer`, `Supplier`. |
 | [`comparators/`](comparators/README.md) | A practical use: sorting with lambdas. |
 
 ## From class to lambda
@@ -119,9 +121,44 @@ A lambda by itself has no type, so `var f = (a, b) -> a + b;` **doesn't compile*
 
 </details>
 
+## Built-in functional interfaces (`java.util.function`)
+
+Run [`FunctionalInterfaceDemo`](FunctionalInterfaceDemo.java). Its numbered sections match the steps below.
+
+1. **Recap.** `IntegerMath` describes one shape, `(int, int) -> int`.
+2. **The repetition problem.** To ask "is this number even?" we need a *different* shape, `(int) -> boolean`, so we invent `IntegerCheck`. Then "is this string empty?" needs `(String) -> boolean`, so we invent `TextCheck`. Both say "take something, answer true/false". Only the type changes, and `Calculator` grows a new method each time.
+3. **Java already has these shapes.** The `java.util.function` package provides a generic interface for each common shape. Your lambda doesn't change. Only the interface type you assign it to does.
+4. **The payoff.** Library methods already accept these types, so your lambdas plug straight in: `list.removeIf(...)` takes a `Predicate`, and `list.forEach(...)` takes a `Consumer`.
+
+### The common functional interfaces
+
+| Interface | Description | Functional method |
+|-----------|-------------|-------------------|
+| `Runnable` | An operation that accepts **no** input arguments and **returns no result**. | `void run()` |
+| `Supplier<R>` | An operation that accepts **no** input arguments and **returns an object of type `R`**. | `R get()` |
+| `Consumer<T>` | An operation that accepts a **single** input argument and **returns no result**. | `void accept(T t)` |
+| `BiConsumer<T, U>` | An operation that accepts **two** input arguments and **returns no result**. | `void accept(T t, U u)` |
+| `Function<T, R>` | A function that accepts **one** argument and **produces a result**. | `R apply(T t)` |
+| `BiFunction<T, U, R>` | A function that accepts **two** arguments and **produces a result**. | `R apply(T t, U u)` |
+| `Predicate<T>` | A predicate (**`boolean`**-valued function) of **one** argument. | `boolean test(T t)` |
+| `BiPredicate<T, U>` | A predicate (**`boolean`**-valued function) of **two** arguments. | `boolean test(T t, U u)` |
+
+`Runnable` lives in `java.lang`, so it needs no import. All the others are in `java.util.function`. The **Bi-** versions are the same idea with a second argument. `Predicate<T>` is the generic replacement for our `IntegerCheck` and `TextCheck`.
+
+Notice that the **method name changes with the interface**: `run`, `get`, `accept`, `apply`, `test`. This is rule 2 again. The interface supplies the name, and the lambda only supplies the body. The same lambda `n -> n % 2 == 0` can become an `IntegerCheck` (call `.test`) or a `Predicate<Integer>` (also `.test`), depending on its target type.
+
+### Gotchas
+
+- **Same shape doesn't mean same type.** A `Predicate<Integer>` can't be passed where an `IntegerCheck` is expected, even though both are `int -> boolean` in spirit. Java matches interface **types**, not shapes. (A lambda written *inline* works for either, because its type comes from where it's used.)
+- **Generics need wrapper types.** It's `Predicate<Integer>`, not `Predicate<int>`. Java converts between `int` and `Integer` for you (autoboxing).
+- **Calling the wrong method name** fails to compile: `isEven.apply(8)` is an error because `Predicate`'s method is `test`.
+
 ## Try it
 
-1. Write a **division** operation three ways: as a class, as an anonymous class and as a lambda. Pass each one to `operateBinary`.
+1. Write a **division** operation two ways: as a class, and as a lambda. Pass each one to `operateBinary`.
 2. Add a second abstract method to `IntegerMath`. What happens to every lambda in the project? Why?
 3. Write a lambda with a block body: `(a, b) -> { int r = a % b; return r; }`. When do you need braces and `return`?
 4. Store several lambdas in a `java.util.Map<String, IntegerMath>` (for example `"+"`, `"-"`, `"*"`), then look one up by symbol. This is the same pattern `comparators/Book.java` uses.
+5. In `FunctionalInterfaceDemo`, uncomment `isEven.apply(8);` and read the error. Then uncomment `myApp.checkNumber(8, isEven);`. Why does it fail, when `myApp.checkNumber(8, n -> n % 2 == 0)` works?
+6. Replace `IntegerCheck` and `TextCheck` with `Predicate<Integer>` and `Predicate<String>` in `Calculator`. Can you now delete both interfaces? Can `checkNumber` and `checkText` become one generic method?
+7. Write a `Function<Integer, String>` that turns a number into `"even"` or `"odd"`, and a `Supplier<Integer>` that returns a random die roll from 1 to 6.
