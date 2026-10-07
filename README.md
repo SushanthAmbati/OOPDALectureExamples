@@ -14,6 +14,7 @@ Work through these roughly in order. Each folder has its own README with the big
 | 2 | Sorting your own objects with `Comparable` | [`src/sorting`](src/sorting/README.md) | `SortWithoutComparableDemo`, then `BookDemo` |
 | 3 | Functional interfaces and lambdas | [`src/lambdas`](src/lambdas/README.md) | `LambdasDemo` |
 | 4 | Many orderings with `Comparator` lambdas | [`src/lambdas/comparators`](src/lambdas/comparators/README.md) | `BookDemo` |
+| 5 | Built-in functional interfaces (`java.util.function`) | [`src/lambdas`](src/lambdas/README.md#built-in-functional-interfaces-javautilfunction) | `FunctionalInterfaceDemo` |
 
 ### How to use each example
 
