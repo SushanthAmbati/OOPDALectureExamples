@@ -15,6 +15,9 @@ Work through these roughly in order. Each folder has its own README with the big
 | 3 | Functional interfaces and lambdas | [`src/lambdas`](src/lambdas/README.md) | `LambdasDemo` |
 | 4 | Many orderings with `Comparator` lambdas | [`src/lambdas/comparators`](src/lambdas/comparators/README.md) | `BookDemo` |
 | 5 | Built-in functional interfaces (`java.util.function`) | [`src/lambdas`](src/lambdas/README.md#built-in-functional-interfaces-javautilfunction) | `FunctionalInterfaceDemo` |
+| 6 | Inheritance and overriding | [`src/inheritance`](src/inheritance/README.md) | `ItemDemo`, then `DogDemo` and `Demo` |
+| 7 | Exceptions: throwing, catching and custom exceptions | [`src/exceptions`](src/exceptions/README.md) | `v1/Driver`, then `v2/Driver` |
+| 8 | Design principles: favor composition over inheritance | [`src/designprinciples`](src/designprinciples/README.md) | `inheritance/Driver`, then `composition/Driver` |
 
 ### How to use each example
 
@@ -53,7 +56,7 @@ Work through these roughly in order. Each folder has its own README with the big
 - `bin/` contains compiled `.class` files. These are generated output; edit the source files in `src/` instead.
 - `docs/` contains notes for maintainers. [`docs/ADDING_EXAMPLES.md`](docs/ADDING_EXAMPLES.md) explains the naming conventions and README template used for each topic.
 
-Other examples: `java -cp bin interfaces.NotifierDemo`, `java -cp bin lambdas.comparators.BookDemo`.
+Other examples: `java -cp bin interfaces.NotifierDemo`, `java -cp bin lambdas.comparators.BookDemo`, `java -cp bin exceptions.v2.Driver`, `java -cp bin designprinciples.composition.Driver`.
 
 ## Troubleshooting
 
