@@ -1,3 +1,9 @@
 /bin/*
 .DS_Store
 .DS_STORE
+
+# Created by exceptions/*/DemoSetup when the exceptions demos run
+/images/
+
+# Personal VS Code run configs (e.g. JavaFX --module-path); see src/gui/README.md
+.vscode/launch.json
