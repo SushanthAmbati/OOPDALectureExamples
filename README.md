@@ -18,6 +18,7 @@ Work through these roughly in order. Each folder has its own README with the big
 | 6 | Inheritance and overriding | [`src/inheritance`](src/inheritance/README.md) | `ItemDemo`, then `DogDemo` and `Demo` |
 | 7 | Exceptions: throwing, catching and custom exceptions | [`src/exceptions`](src/exceptions/README.md) | `v1/Driver`, then `v2/Driver` |
 | 8 | Design principles: favor composition over inheritance | [`src/designprinciples`](src/designprinciples/README.md) | `inheritance/Driver`, then `composition/Driver` |
+| 9 | GUIs with JavaFX: stages, controls and events (**needs [JavaFX setup](src/gui/README.md#setup-javafx)**) | [`src/gui`](src/gui/README.md) | `HelloWorld` |
 
 ### How to use each example
 
