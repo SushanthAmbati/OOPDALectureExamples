@@ -1,6 +1,6 @@
 # Streams: `map` vs. `flatMap`
 
-**Big idea:** A **stream** is a pipeline that data flows through: a **source** (`list.stream()`), then any number of **intermediate** steps (`map`, `filter`, `distinct`, …), then **one terminal** step that produces a result (`collect`, `count`, …). Each step takes a lambda. `map` turns each element into **one** new thing. `flatMap` turns each element into **many** things and merges them all into a single stream.
+**Idea:** A **stream** is a pipeline that data flows through: a **source** (`list.stream()`), then any number of **intermediate** steps (`map`, `filter`, `distinct`, …), then **one terminal** step that produces a result (`collect`, `count`, …). Each step takes a lambda. `map` turns each element into **one** new thing. `flatMap` turns each element into **many** things and merges them all into a single stream.
 
 > Streams are built from the functional interfaces in [`../lambdas`](../lambdas/README.md#built-in-functional-interfaces-javautilfunction): `filter` takes a `Predicate` and `map` takes a `Function`.
 
